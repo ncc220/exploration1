@@ -10,6 +10,7 @@ export class BoardComponent implements OnInit {
   squares: any[];
   xIsNext: boolean;
   winner: string;
+  count: number;
 
   constructor() { }
 
@@ -41,6 +42,24 @@ export class BoardComponent implements OnInit {
         this.squares[i]="buttonDisabled = true";
       }
     }
+    
+    for(let i = 0; i < this.squares.length; i++)
+      {
+        if(this.squares[i] != null)
+        {
+          this.count++;
+        }
+      }
+
+    if(this.winner == null)
+    {
+      if(this.count == 9)
+      {
+          this.winner = "Cat's game, neither player"
+      } 
+      this.count = 0; 
+    }
+    
   }
 
   calculateWinner() {
